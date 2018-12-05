@@ -8,13 +8,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="409.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programacion2parcial.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="raiz" onKeyPressed="#ani" prefHeight="409.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programacion2parcial.FXMLDocumentController">
    <children>
       <SplitPane dividerPositions="0.7109243697478992" prefHeight="409.0" prefWidth="683.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="407.0" prefWidth="461.0">
                <children>
-                  <TableView fx:id="tablaPersonas" layoutX="-2.0" layoutY="-3.0" onMouseClicked="#modificarlista" prefHeight="409.0" prefWidth="487.0">
+                  <TableView fx:id="tablaPersonas" layoutX="-2.0" layoutY="-3.0" prefHeight="409.0" prefWidth="487.0">
                     <columns>
                       <TableColumn fx:id="nombreCL" prefWidth="75.0" text="Nombre" />
                       <TableColumn fx:id="aliasCL" prefWidth="75.0" text="Alias" />

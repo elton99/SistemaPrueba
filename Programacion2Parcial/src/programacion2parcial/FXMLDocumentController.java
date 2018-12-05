@@ -140,7 +140,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void eliminar(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("ELIMINAR PROFESORES");
+        alert.setTitle("ELIMINAR Personajes");
         alert.setHeaderText("ALERTA, ALERTA, ALERTA");
         alert.setContentText("Estás seguro de eliminar el registro?");
 
@@ -248,7 +248,7 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    @FXML
+    /*@FXML
     public void modificarlista() {
         em.getTransaction().begin();
         Personajes persona = tablaPersonas.getSelectionModel().getSelectedItem();
@@ -263,22 +263,33 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("Nombre: " + persona.getNombre());
         nombreTF.setText(persona.getNombre());
         modificarBT.setDisable(false);
-        eliminarBT.setDisable(false);
+        eliminarBT.setDisable(false);*/
         //persona.setNombre(nombreTF.getText());//lo que haya en el nombreTF que me lo traiga como texto(getText) y lo ponga en el atributo nombre
         //persona.setApellido(apellidoTF.getText());
         //persona.setCi(ciTF.getText());//en vez de getText se usa parseInt para valores entero//
         //persona.setTelefono(telefonoTF.getText());
         //persona.setDireccion(ciudadTF.getText());
-    }
-
-    private void ani() {
-        KeyCombination btonuevo = new KeyCodeCombination(KeyCode.ENTER, KeyCombination.CONTROL_DOWN);
-        raiz.setOnKeyPressed((KeyEvent event) -> {
-            this.aniadir();
-        });
+    //}
+  /*  private void ani(KeyEvent bot) {
+        KeyCombination btonuevo = new KeyCodeCombination(KeyCode.ENTER, KeyCombination.ALT_ANY);
+            //this.aniadir();
+            if(bot.equals(btonuevo)){
+                System.out.println("OK");
+                this.aniadir();
+            }else{
+                System.out.println("error");
+            }
     }
 
     //  @FXML
     //  private void nuevo(ActionEvent event) {
     //  }
+*/
+    @FXML
+    private void ani() {
+         KeyCombination btonuevo = new KeyCodeCombination(KeyCode.ENTER, KeyCombination.ALT_ANY);
+         raiz.setOnKeyPressed((KeyEvent event1Event)->{
+             aniadir();
+         });
+    }
 }
