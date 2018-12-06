@@ -90,6 +90,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private AnchorPane raiz;
 
+    public Personajes persona = new Personajes();
+
     // List<Personajes> lista=new ArrayList();
     @FXML
     private void aniadir() {
@@ -98,7 +100,7 @@ public class FXMLDocumentController implements Initializable {
         persona.setNombre(nombreTF.getText());//lo que haya en el nombreTF que me lo traiga como texto(getText) y lo ponga en el atributo nombre
         persona.setAlias(aliasTF.getText());
         persona.setPoder(poderTF.getText());//en vez de getText se usa parseInt para valores entero//
-        persona.setPoder(direccionTF.getText());//en vez de getText se usa parseInt para valores entero//
+        persona.setDireccion(direccionTF.getText());//en vez de getText se usa parseInt para valores entero//
         persona.setTelefono(telefonoTF.getText());
         persona.setCorreo(correoTF.getText());
         em.persist(persona);
@@ -112,7 +114,7 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    @FXML
+    /* @FXML
     private void modificar(ActionEvent event) {
         em.getTransaction().begin();
 
@@ -122,8 +124,7 @@ public class FXMLDocumentController implements Initializable {
         Platform.runLater(() -> {
             this.iniciarDatos();
         });
-    }
-
+    }*/
     @FXML
     private void nuevo(ActionEvent event) {
         nombreTF.setText("");
@@ -194,11 +195,11 @@ public class FXMLDocumentController implements Initializable {
         nombreCL.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         aliasCL.setCellValueFactory(new PropertyValueFactory<>("alias"));
         poderCL.setCellValueFactory(new PropertyValueFactory<>("poder"));
-        direccionCL.setCellValueFactory(new PropertyValueFactory<>("poder"));
+        direccionCL.setCellValueFactory(new PropertyValueFactory<>("direccion"));
         telefonoCL.setCellValueFactory(new PropertyValueFactory<>("telefono"));
         correoCL.setCellValueFactory(new PropertyValueFactory<>("correo"));
 
-        /*FilteredList<Personajes> Centinela = new FilteredList<>(personas, persona -> true);
+        /* FilteredList<Personajes> Centinela = new FilteredList<>(personajes, persona -> true);
         BuscarTF.textProperty().addListener((Observar, Lista, Evaluar) -> {
             Centinela.setPredicate(persona -> {
                 // El componente TextField(Buscar) esta vacio muestra los datos de las personas en la tabla//
@@ -218,10 +219,10 @@ public class FXMLDocumentController implements Initializable {
                 }
                 return false; // si no hay nada coincidencias en nombre,apellido y ciudad la tabla desaparece por un momento hasta que se deje vacio la parte de buscar
             });
-        });*/
+        });
         // 3. Asignacion de la lista FilteredList a SortedList(libreria)        SortedList<Personajes> BuscarDato = new SortedList<>(Centinela);*/
         // 4.crea una conexion ordenada de la lista de personas con textfield de buscar
-        // BuscarDato.comparatorProperty().bind(tablaPersonas.comparatorProperty());
+        //BuscarDato.comparatorProperty().bind(tablaPersonas.comparatorProperty());
         // 5. Trae los datos de las personas ordenados a las filas de la tabla.
         // tablaPersonas.setItems(BuscarDato);
     }
@@ -234,7 +235,7 @@ public class FXMLDocumentController implements Initializable {
         });
         this.inicializarTablaPersonas();
         modificarBT.setDisable(true);
-        //eliminarBT.setDisable(true);
+        eliminarBT.setDisable(true);
 
         //Seleccionar las tuplas de la tabla persona(Tupla: Es la secuencia de valores agrupados en la tabla)//
         //  final ObservableList<Persona> tablaPersonaSel = tablaPersonas.getSelectionModel().getSelectedItems();
@@ -248,29 +249,24 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    /*@FXML
-    public void modificarlista() {
-        em.getTransaction().begin();
-        Personajes persona = tablaPersonas.getSelectionModel().getSelectedItem();
-        persona.setNombre(nombreTF.getText());
-        em.merge(persona);
-        em.getTransaction().commit();
-        Platform.runLater(() -> {
-            this.iniciarDatos();
-            //em.close();
-        });
-
-        System.out.println("Nombre: " + persona.getNombre());
-        nombreTF.setText(persona.getNombre());
-        modificarBT.setDisable(false);
-        eliminarBT.setDisable(false);*/
-        //persona.setNombre(nombreTF.getText());//lo que haya en el nombreTF que me lo traiga como texto(getText) y lo ponga en el atributo nombre
-        //persona.setApellido(apellidoTF.getText());
-        //persona.setCi(ciTF.getText());//en vez de getText se usa parseInt para valores entero//
-        //persona.setTelefono(telefonoTF.getText());
-        //persona.setDireccion(ciudadTF.getText());
+    /**
+     * @FXML public void modificarlista() { em.getTransaction().begin();
+     * Personajes persona = tablaPersonas.getSelectionModel().getSelectedItem();
+     * persona.setNombre(nombreTF.getText()); em.merge(persona);
+     * em.getTransaction().commit(); Platform.runLater(() -> {
+     * this.iniciarDatos(); //em.close(); });
+     *
+     * System.out.println("Nombre: " + persona.getNombre());
+     * nombreTF.setText(persona.getNombre()); modificarBT.setDisable(false);
+        eliminarBT.setDisable(false);
+     */
+    //persona.setNombre(nombreTF.getText());//lo que haya en el nombreTF que me lo traiga como texto(getText) y lo ponga en el atributo nombre
+    //persona.setApellido(apellidoTF.getText());
+    //persona.setCi(ciTF.getText());//en vez de getText se usa parseInt para valores entero//
+    //persona.setTelefono(telefonoTF.getText());
+    //persona.setDireccion(ciudadTF.getText());
     //}
-  /*  private void ani(KeyEvent bot) {
+    /*  private void ani(KeyEvent bot) {
         KeyCombination btonuevo = new KeyCodeCombination(KeyCode.ENTER, KeyCombination.ALT_ANY);
             //this.aniadir();
             if(bot.equals(btonuevo)){
@@ -284,12 +280,44 @@ public class FXMLDocumentController implements Initializable {
     //  @FXML
     //  private void nuevo(ActionEvent event) {
     //  }
-*/
+     */
     @FXML
     private void ani() {
-         KeyCombination btonuevo = new KeyCodeCombination(KeyCode.ENTER, KeyCombination.ALT_ANY);
-         raiz.setOnKeyPressed((KeyEvent event1Event)->{
-             aniadir();
-         });
+        KeyCombination btonuevo = new KeyCodeCombination(KeyCode.ENTER, KeyCombination.ALT_ANY);
+        raiz.setOnKeyPressed((KeyEvent event1Event) -> {
+            aniadir();
+        });
+    }
+
+    @FXML
+    private void modificarlista() {
+        persona = tablaPersonas.getSelectionModel().getSelectedItem();
+        System.out.println("Nombre = " + persona.getNombre() + "Alias = " + persona.getAlias());
+        nombreTF.setText(persona.getNombre());
+        aliasTF.setText(persona.getAlias());
+        poderTF.setText(persona.getPoder());
+        direccionTF.setText(persona.getDireccion());
+        telefonoTF.setText(persona.getTelefono());
+        correoTF.setText(persona.getCorreo());
+        modificarBT.setDisable(false);
+        eliminarBT.setDisable(false);
+
+    }
+
+    @FXML
+    private void mod(ActionEvent event) {
+        Personajes p = persona;
+        em.getTransaction().begin();
+        p.setNombre(nombreTF.getText());
+        p.setAlias(aliasTF.getText());
+        p.setPoder(poderTF.getText());
+        p.setDireccion(direccionTF.getText());
+        p.setTelefono(telefonoTF.getText());
+        p.setCorreo(correoTF.getText());
+        em.merge(p);
+        em.getTransaction().commit();
+        Platform.runLater(() -> {
+            this.iniciarDatos();
+        });
     }
 }

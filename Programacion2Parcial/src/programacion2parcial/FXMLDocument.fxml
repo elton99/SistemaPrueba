@@ -14,7 +14,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="407.0" prefWidth="461.0">
                <children>
-                  <TableView fx:id="tablaPersonas" layoutX="-2.0" layoutY="-3.0" prefHeight="409.0" prefWidth="487.0">
+                  <TableView fx:id="tablaPersonas" layoutX="-2.0" layoutY="-3.0" onKeyPressed="#modificarlista" onMouseClicked="#modificarlista" prefHeight="409.0" prefWidth="487.0">
                     <columns>
                       <TableColumn fx:id="nombreCL" prefWidth="75.0" text="Nombre" />
                       <TableColumn fx:id="aliasCL" prefWidth="75.0" text="Alias" />
@@ -42,7 +42,7 @@
                   <Button fx:id="eliminarBT" layoutX="11.0" layoutY="295.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="26.0" prefWidth="171.0" text="Eliminar" />
                   <Button fx:id="aniadirBT" layoutX="28.0" layoutY="335.0" mnemonicParsing="false" onAction="#aniadir" text="Añadir" />
                   <Button fx:id="nuevoBT" layoutX="105.0" layoutY="335.0" mnemonicParsing="false" onAction="#nuevo" text="Nuevo" />
-                  <Button fx:id="modificarBT" layoutX="11.0" layoutY="367.0" mnemonicParsing="false" onAction="#modificar" prefHeight="26.0" prefWidth="171.0" text="Modificar" />
+                  <Button fx:id="modificarBT" layoutX="11.0" layoutY="367.0" mnemonicParsing="false" onAction="#mod" prefHeight="26.0" prefWidth="171.0" text="Modificar" />
                </children></AnchorPane>
         </items>
       </SplitPane>
