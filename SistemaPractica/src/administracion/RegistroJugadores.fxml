@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="administracion.RegistroJugadoresController">
+   <children>
+      <Label prefHeight="51.0" prefWidth="600.0" style="-fx-background-color: grey;" text="  REGISTRO JUGADORES" textAlignment="CENTER" textFill="#c60f0f">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="34.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tablaJugadores" layoutY="51.0" prefHeight="348.0" prefWidth="430.0">
+        <columns>
+          <TableColumn fx:id="nombreCL" prefWidth="104.0" text="Nombre" />
+          <TableColumn fx:id="apellidoCL" prefWidth="89.0" text="Apellido" />
+            <TableColumn fx:id="ciCL" prefWidth="85.0" text="CI" />
+            <TableColumn fx:id="sexoCL" prefWidth="55.0" text="Sexo" />
+            <TableColumn fx:id="promoCL" prefWidth="96.0" text="Promocion" />
+        </columns>
+      </TableView>
+      <Label layoutX="439.0" layoutY="59.0" text="Nombre:" textFill="#2706d0" />
+      <Label layoutX="439.0" layoutY="105.0" text="Apellido:" textFill="#2806d3" />
+      <Label layoutX="439.0" layoutY="154.0" text="Cedula Identidad:" textFill="#2908e8" />
+      <Label layoutX="439.0" layoutY="200.0" text="Promocion:" textFill="#2112f2" />
+      <TextField fx:id="nombreTF" layoutX="439.0" layoutY="75.0" prefHeight="26.0" prefWidth="149.0" promptText="Ingrese nombre" />
+      <TextField fx:id="apellidoTF" layoutX="439.0" layoutY="121.0" prefHeight="26.0" prefWidth="149.0" promptText="Ingrese apellido" />
+      <TextField fx:id="ciTF" layoutX="439.0" layoutY="170.0" prefHeight="26.0" prefWidth="149.0" promptText="Su numero de CI" />
+      <TextField fx:id="promoTF" layoutX="439.0" layoutY="216.0" prefHeight="26.0" prefWidth="149.0" promptText="Promocion año" />
+      <RadioButton fx:id="MasBT" layoutX="447.0" layoutY="266.0" mnemonicParsing="false" text="Masculino" textFill="#0a0a0a">
+         <toggleGroup>
+            <ToggleGroup fx:id="buttonT" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="FemBT" layoutX="447.0" layoutY="290.0" mnemonicParsing="false" text="Femenino" textFill="#0d0c0c" toggleGroup="$buttonT" />
+      <Label layoutX="491.0" layoutY="248.0" prefHeight="18.0" prefWidth="45.0" text="SEXO" textFill="#0a14d1" />
+      <Button fx:id="agregarBT" layoutX="437.0" layoutY="319.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="Agregar" />
+      <Button fx:id="nuevoBT" layoutX="524.0" layoutY="319.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="72.0" text="Nuevo" />
+      <Button fx:id="modificarBT" layoutX="437.0" layoutY="353.0" mnemonicParsing="false" text="Modificar" />
+      <Button fx:id="eliminarBT" layoutX="523.0" layoutY="353.0" mnemonicParsing="false" text="Eliminar" />
+      <Button fx:id="salirBT" layoutX="524.0" layoutY="13.0" mnemonicParsing="false" text="Cerrar" textFill="#3117da" />
+      <Button fx:id="volverBT" layoutX="461.0" layoutY="13.0" mnemonicParsing="false" text="Volver" textFill="#dd1818" />
+   </children>
+</AnchorPane>
