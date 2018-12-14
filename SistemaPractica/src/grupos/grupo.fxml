@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="376.0" prefWidth="409.0" style="-fx-background-color: green;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="grupos.GrupoController">
+   <children>
+      <ListView fx:id="VistaId" layoutY="45.0" prefHeight="335.0" prefWidth="445.0" style="-fx-background-color: gray;" />
+      <Label layoutX="110.0" layoutY="11.0" prefHeight="34.0" prefWidth="253.0" style="-fx-background-color: black;" text="Lista de Grupos" textFill="#e1d3d3">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
