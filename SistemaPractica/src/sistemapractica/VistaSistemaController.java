@@ -31,9 +31,17 @@ public class VistaSistemaController implements Initializable {
     @FXML
     private MenuButton transM;
     @FXML
-    private MenuItem equipo;
+    private MenuItem campeonatoM;
     @FXML
-    private MenuItem jugadores;
+    private MenuItem gruposM;
+    @FXML
+    private MenuItem equipoM;
+    @FXML
+    private MenuItem jugadoresM;
+    @FXML
+    private MenuItem arbitroM;
+    @FXML
+    private MenuItem EtapaFinalM;
     
     
     @Override
@@ -49,6 +57,25 @@ public class VistaSistemaController implements Initializable {
         Stage jugadorStage=new Stage();
         jugadorStage.setScene(jugadorScene);
         jugadorStage.show();    
+    }
+    @FXML
+    private void cargarEquipo(ActionEvent event) throws IOException{
+        FXMLLoader equipoLoader=new FXMLLoader(getClass().getResource("/equipos/equipo.fxml"));
+        Parent equipoParent=equipoLoader.load();
+        Scene equipoScene=new Scene(equipoParent);
+        Stage equipoStage=new Stage();
+        equipoStage.setScene(equipoScene);
+        equipoStage.show();
+          
+    }
+    @FXML
+    private void cargarEtapaFinal(ActionEvent event) throws IOException{
+    FXMLLoader etapaFinalLoader=new FXMLLoader(getClass().getResource("/EtapaEquipo/EtapaEquipos.fxml"));
+    Parent etapaParent=etapaFinalLoader.load();
+    Scene etapaScene=new Scene(etapaParent);
+    Stage etapaStage=new Stage();
+    etapaStage.setScene(etapaScene);
+    etapaStage.show();
     }
     
 }

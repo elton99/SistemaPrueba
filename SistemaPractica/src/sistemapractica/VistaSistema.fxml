@@ -14,9 +14,10 @@
         <items>
             <MenuItem fx:id="campeonatoM" mnemonicParsing="false" text="Campeonato" />
             <MenuItem fx:id="gruposM" mnemonicParsing="false" text="Grupos" />
-          <MenuItem fx:id="equipoM" mnemonicParsing="false" text="Registro equipo" />
+          <MenuItem fx:id="equipoM" mnemonicParsing="false" onAction="#cargarEquipo" text="Registro equipo" />
           <MenuItem fx:id="jugadoresM" mnemonicParsing="false" onAction="#cargarJugador" text="Registro jugador" />
             <MenuItem fx:id="arbitroM" mnemonicParsing="false" text="Registro arbitro" />
+            <MenuItem fx:id="EtapaFinalM" mnemonicParsing="false" onAction="#cargarEtapaFinal" text="Etapa Final" />
         </items>
       </MenuButton>
       <MenuButton fx:id="transM" alignment="CENTER" layoutX="344.0" layoutY="118.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="254.0" text="Transaccion">
