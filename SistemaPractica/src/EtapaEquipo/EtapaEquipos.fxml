@@ -8,15 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="394.0" prefWidth="371.0" style="-fx-background-color: green;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="EtapaEquipo.EtapaEquiposController">
+<AnchorPane id="AnchorPane" prefHeight="394.0" prefWidth="371.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EtapaEquipo.EtapaEquiposController">
    <children>
       <Label layoutX="133.0" layoutY="14.0" prefHeight="19.0" prefWidth="115.0" text="ETAPA FINAL" textFill="#eee9e9">
          <font>
             <Font name="DejaVu Sans Bold" size="15.0" />
          </font>
       </Label>
-      <TableView fx:id="tablaCantidad" layoutX="5.0" layoutY="47.0" prefHeight="228.0" prefWidth="360.0">
+      <TableView fx:id="tablaCantidad" layoutX="5.0" layoutY="47.0" onKeyPressed="#modificarlista" onMouseClicked="#modificarlista" prefHeight="228.0" prefWidth="360.0">
         <columns>
           <TableColumn fx:id="idEtapaCL" prefWidth="125.0" text="idEtapaFinal" />
           <TableColumn fx:id="CantidadCL" prefWidth="234.0" text="Cantidad Partidos" />
@@ -28,7 +27,23 @@
          </font>
       </Label>
       <TextField fx:id="CantidadTF" layoutX="163.0" layoutY="286.0" prefHeight="26.0" prefWidth="195.0" promptText="Ingrese cantidad" />
-      <Button fx:id="agregarBT" layoutX="28.0" layoutY="338.0" mnemonicParsing="false" onAction="#agregar" text="Agregar" />
-      <Button fx:id="eliminarBT" layoutX="112.0" layoutY="338.0" mnemonicParsing="false" text="Eliminar" />
+      <Button fx:id="agregarBT" layoutX="64.0" layoutY="338.0" mnemonicParsing="false" onAction="#agregar" text="Agregar">
+         <font>
+            <Font size="10.0" />
+         </font></Button>
+      <Button fx:id="eliminarBT" layoutX="130.0" layoutY="338.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar">
+         <font>
+            <Font size="10.0" />
+         </font></Button>
+      <Button fx:id="modificarBT" layoutX="191.0" layoutY="338.0" mnemonicParsing="false" onAction="#mod" text="Modificar">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="261.0" layoutY="338.0" mnemonicParsing="false" text="Buscar">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

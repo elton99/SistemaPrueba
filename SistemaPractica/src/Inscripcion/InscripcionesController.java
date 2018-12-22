@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package EtapaEquipo;
+package Inscripcion;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,86 +19,100 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
-import javafx.stage.StageStyle;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import sistemapractica.Equipo;
 import sistemapractica.EtapaFinal;
+import sistemapractica.Inscripcion;
 
 /**
  * FXML Controller class
  *
  * @author elton
  */
-public class EtapaEquiposController implements Initializable {
+public class InscripcionesController implements Initializable {
 
     @FXML
-    private TableView<EtapaFinal> tablaCantidad;
+    private TableView<Inscripcion> tablaInscripcion;
     @FXML
-    private TableColumn<EtapaFinal, String> idEtapaCL;
+    private TableColumn<Inscripcion, String> idCL;
     @FXML
-    private TableColumn<EtapaFinal, String> CantidadCL;
+    private TableColumn<Inscripcion, String> montoCL;
     
     
+    @FXML
+    private ComboBox<Equipo> comboEQ;
+    @FXML
+    
+    private TextField montoTF;
+   
     EntityManagerFactory emf=Persistence.createEntityManagerFactory("SistemaPracticaPU");
     EntityManager em=emf.createEntityManager();
-    
-    @FXML
-    private TextField CantidadTF;
+   
     @FXML
     private Button agregarBT;
     @FXML
-    private Button eliminarBT;
-
-    private final ObservableList<EtapaFinal>lista=FXCollections.observableArrayList();
-    private final List<EtapaFinal>listaEtapa=new ArrayList<>();
-    int posicionEquipoEnTabla;
-    @FXML
     private Button modificarBT;
+    @FXML
+    private Button eliminarBT;
+    @FXML
+    private Button buscarBT;
     
-    public EtapaFinal etap=new EtapaFinal();
-    
+    private final ObservableList<Inscripcion>lista=FXCollections.observableArrayList();
+    private final List<Inscripcion>listaMonto=new ArrayList<>();
+    private final ObservableList<Equipo> listaEquipo=FXCollections.observableArrayList();
+    int posicionEquipoEnTabla;
+    public Inscripcion is=new Inscripcion();
+
+    /**
+     * Initializes the controller class.
+     * @param url
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        this.getEquipo();
         this.iniciarDatos();
         Platform.runLater(() -> {
-        CantidadTF.requestFocus();
+        montoTF.requestFocus();
         });
-        this.inicializarTablaEquipo();
+        this.inicializarTablaInscripcion();
         modificarBT.setDisable(true);
         eliminarBT.setDisable(true);
     }    
     @FXML
     public void agregar(){
+    Equipo g = new Equipo();
+    g = comboEQ.getSelectionModel().getSelectedItem();
     em.getTransaction().begin();
-    EtapaFinal etapa=new EtapaFinal();
-    etapa.setCantidadpart(Integer.parseInt(CantidadTF.getText()));
-    em.persist(etapa);
+    Inscripcion mon=new Inscripcion();
+    mon.setInscripcionPrecio(Integer.parseInt(montoTF.getText()));
+    mon.setIdtable1(g);
+    em.persist(mon);
     em.getTransaction().commit();
     Platform.runLater(() -> {
-        this.cargarCantidad();
         this.iniciarDatos();
     });
-    }    
+    }
     @FXML
     private void eliminar(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("ELIMINAR EtapaRegistro");
+        alert.setTitle("ELIMINAR Inscripcion Registro");
         alert.setHeaderText("ALERTA, ALERTA, ALERTA");
         alert.setContentText("Estás seguro de eliminar el registro?");
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
             em.getTransaction().begin();
-            EtapaFinal p = tablaCantidad.getSelectionModel().getSelectedItem();
-            System.out.println("Se ha seleccionado: " + p.getCantidadpart());
+            Inscripcion p = tablaInscripcion.getSelectionModel().getSelectedItem();
+            System.out.println("Se ha seleccionado: " + p.getInscripcionPrecio());
             em.remove(p);
             em.getTransaction().commit();
             Platform.runLater(() -> {
@@ -108,74 +122,70 @@ public class EtapaEquiposController implements Initializable {
             System.out.println("NO");
         }
     }
-    public EtapaFinal getTablaEquipoSeleccionado() {
-        if (tablaCantidad != null) {
-            List<EtapaFinal> tabla = tablaCantidad.getSelectionModel().getSelectedItems();
+    public Inscripcion getTablaEquipoSeleccionado() {
+        if (tablaInscripcion != null) {
+            List<Inscripcion> tabla = tablaInscripcion.getSelectionModel().getSelectedItems();
             if (tabla.size() == 1) {
-                final EtapaFinal competicionSeleccionada = tabla.get(0);
+                final Inscripcion competicionSeleccionada = tabla.get(0);
                 return competicionSeleccionada;
             }
         }
         return null;
     }
-
     private void ponerPersonaSeleccionada() {
-        final EtapaFinal etapa = getTablaEquipoSeleccionado();
+        final Inscripcion etapa = getTablaEquipoSeleccionado();
         posicionEquipoEnTabla = lista.indexOf(etapa);
         if (etapa != null) {
             //Se pone los TextField con los Datos Correspondientes//
            // nombreTF.setText(equipo.getNombreEquipo());
-            etapa.setCantidadpart(Integer.parseInt(CantidadTF.getText()));
+            etapa.setInscripcionPrecio(Integer.parseInt(montoTF.getText()));
             eliminarBT.setDisable(false);
             modificarBT.setDisable(false);
             agregarBT.setDisable(true);
         }
+        
     }
-   
-    public void inicializarTablaEquipo() {
-        tablaCantidad.setItems(lista);
-        idEtapaCL.setCellValueFactory(new PropertyValueFactory<>("idetapaFinal"));
-        CantidadCL.setCellValueFactory(new PropertyValueFactory<>("cantidadpart"));
+     public void inicializarTablaInscripcion() {
+        tablaInscripcion.setItems(lista);
+        idCL.setCellValueFactory(new PropertyValueFactory<>("idtable1"));
+        montoCL.setCellValueFactory(new PropertyValueFactory<>("inscripcionPrecio"));
     }
     
     public void iniciarDatos() {
         lista.clear();
-        TypedQuery<EtapaFinal> consulta = em.createQuery("SELECT e FROM EtapaFinal e ", EtapaFinal.class);
+        TypedQuery<Inscripcion> consulta = em.createQuery("SELECT i FROM Inscripcion i ", Inscripcion.class);
         lista.addAll(consulta.getResultList());
     }
     @FXML
     private void modificarlista() {
-        etap = tablaCantidad.getSelectionModel().getSelectedItem();
-        System.out.println("Cantidad de partidos = " + etap.getCantidadpart());
+        is = tablaInscripcion.getSelectionModel().getSelectedItem();
+        System.out.println("Cantidad de dinero = " + is.getInscripcionPrecio());
         //etap.setCantidadpart(Integer.parseInt(CantidadTF.getText()));
-        etap.setCantidadpart(posicionEquipoEnTabla);
+        is.setInscripcionPrecio(posicionEquipoEnTabla);
         modificarBT.setDisable(false);
         eliminarBT.setDisable(false);
     }
     @FXML
     private void mod(ActionEvent event) {
-        EtapaFinal e = etap;
+        Inscripcion e = is;
         em.getTransaction().begin();
-        e.setCantidadpart(Integer.parseInt(CantidadTF.getText()));
+        e.setInscripcionPrecio(Integer.parseInt(montoTF.getText()));
         em.merge(e);
         em.getTransaction().commit();
         Platform.runLater(() -> {
         this.iniciarDatos();
         });
     }
-    private void cargarCantidad() {
-        if(CantidadTF == null){
-            Alert dialogoAlerta = new Alert(Alert.AlertType.WARNING);
-            dialogoAlerta.setContentText("Ingrese la cantidad de partidos");
-            dialogoAlerta.initStyle(StageStyle.UTILITY);
-            java.awt.Toolkit.getDefaultToolkit().beep();
-            dialogoAlerta.showAndWait();
-        }
+    public List<Equipo> getEquipo(){
+        TypedQuery<Equipo> e=em.createQuery("SELECT e FROM Equipo e",Equipo.class);
+        listaEquipo.addAll(e.getResultList());
+        comboEQ.setItems(listaEquipo);
+        this.comboEQ.setCellFactory((ListView<Equipo> param) -> new InscripcionListCell());
+        //this.comboGP.getSelectionModel().select(0);
+        //this.comboGP.setButtonCell(new GrupoListCell());
+        //this.comboGP.setConverter();
+        return null;
     }
-
-
-   
+    
     
 }
-
-

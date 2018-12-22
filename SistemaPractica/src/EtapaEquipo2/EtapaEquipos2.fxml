@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="456.0" prefWidth="436.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EtapaEquipo2.EtapaEquipos2Controller">
+   <children>
+      <Label layoutX="120.0" layoutY="24.0" prefHeight="19.0" prefWidth="211.0" text="FASES DE LOS EQUIPOS" textFill="#e8dcdc">
+         <font>
+            <Font name="DejaVu Sans Bold" size="15.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tablaFase" layoutX="12.0" layoutY="66.0" onKeyPressed="#modificarlista" onMouseClicked="#modificarlista" prefHeight="247.0" prefWidth="409.0">
+        <columns>
+          <TableColumn fx:id="EquipoCL" prefWidth="100.0" text="idEquipo" />
+          <TableColumn fx:id="etapaFinalCL" prefWidth="128.0" text="idEtapaFinal" />
+            <TableColumn fx:id="FaseCL" prefWidth="180.0" text="FASE" />
+        </columns>
+      </TableView>
+      <Button fx:id="agregarBT" layoutX="270.0" layoutY="375.0" mnemonicParsing="false" onAction="#agregar" text="Agregar">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="modificarBT" layoutX="341.0" layoutY="375.0" mnemonicParsing="false" onAction="#mod" prefHeight="19.0" prefWidth="71.0" text="Modificar">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="eliminarBT" layoutX="270.0" layoutY="408.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Button layoutX="341.0" layoutY="408.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="71.0" text="Buscar">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="comboEQ1" layoutX="27.0" layoutY="347.0" prefWidth="150.0" />
+      <ComboBox fx:id="comboEQ2" layoutX="27.0" layoutY="406.0" prefWidth="150.0" />
+      <Label layoutX="76.0" layoutY="321.0" prefHeight="16.0" prefWidth="79.0" text="IdEquipo" textFill="#f2ecec">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="66.0" layoutY="378.0" prefHeight="22.0" prefWidth="103.0" text="IdEtapa Final" textFill="#e4dede" />
+      <Label layoutX="208.0" layoutY="339.0" text="Fase:" textFill="#d4dad6">
+         <font>
+            <Font name="DejaVu Sans Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="faseTF" layoutX="254.0" layoutY="334.0" prefHeight="26.0" prefWidth="164.0" promptText="Ingrese Fase" />
+   </children>
+</AnchorPane>

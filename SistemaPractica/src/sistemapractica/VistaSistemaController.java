@@ -42,6 +42,10 @@ public class VistaSistemaController implements Initializable {
     private MenuItem arbitroM;
     @FXML
     private MenuItem EtapaFinalM;
+    @FXML
+    private MenuItem faseM;
+    @FXML
+    private MenuItem InscripcionM;
     
     
     @Override
@@ -51,7 +55,7 @@ public class VistaSistemaController implements Initializable {
 
     @FXML
     private void cargarJugador(ActionEvent event) throws IOException {
-        FXMLLoader jugadorLoader= new FXMLLoader(getClass().getResource("/administracion/RegistroJugadores.fxml"));
+        FXMLLoader jugadorLoader= new FXMLLoader(getClass().getResource("/administracion/Jugadores.fxml"));
         Parent jugadorParent=jugadorLoader.load();
         Scene jugadorScene=new Scene(jugadorParent);
         Stage jugadorStage=new Stage();
@@ -77,5 +81,23 @@ public class VistaSistemaController implements Initializable {
     etapaStage.setScene(etapaScene);
     etapaStage.show();
     }
+    @FXML
+    private void cargarFaseFinal(ActionEvent event) throws IOException{
+    FXMLLoader faseLoader=new FXMLLoader(getClass().getResource("/EtapaEquipo2/EtapaEquipos2.fxml"));
+    Parent faseParent=faseLoader.load();
+    Scene faseScene=new Scene(faseParent);
+    Stage faseStage=new Stage();
+    faseStage.setScene(faseScene);
+    faseStage.show();
     
+    }
+    @FXML
+    private void cargarInscripcion(ActionEvent event) throws IOException{
+    FXMLLoader inscriLoader=new FXMLLoader(getClass().getResource("/Inscripcion/Inscripciones.fxml"));
+    Parent inscriParent=inscriLoader.load();
+    Scene inscriScene=new Scene(inscriParent);
+    Stage inscriStage=new Stage();
+    inscriStage.setScene(inscriScene);
+    inscriStage.show();
+    }
 }

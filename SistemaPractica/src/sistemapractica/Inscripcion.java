@@ -95,5 +95,13 @@ public class Inscripcion implements Serializable {
     public String toString() {
         return "sistemapractica.Inscripcion[ idtable1=" + idtable1 + " ]";
     }
+
+    public void getInscripcionPrecio(int posicionEquipoEnTabla) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setIdtable1(Equipo equ) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

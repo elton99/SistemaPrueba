@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="335.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="administracion.JugadoresController">
+   <children>
+      <TableView fx:id="tablaJugador" layoutX="14.0" layoutY="32.0" onKeyPressed="#modificarlista" onMouseClicked="#modificarlista" prefHeight="175.0" prefWidth="306.0">
+        <columns>
+          <TableColumn fx:id="nombreCL" prefWidth="105.0" text="Nombre" />
+          <TableColumn fx:id="apellidoCL" prefWidth="87.0" text="Apellido" />
+            <TableColumn fx:id="promoCL" prefWidth="113.0" text="Promocion" />
+        </columns>
+      </TableView>
+      <Button fx:id="agregarBT" layoutX="234.0" layoutY="275.0" mnemonicParsing="false" onAction="#agregar" prefHeight="26.0" prefWidth="78.0" text="Agregar" />
+      <Button fx:id="modificarBT" layoutX="234.0" layoutY="316.0" mnemonicParsing="false" onAction="#mod" text="Modificar" />
+      <Button fx:id="eliminarBT" layoutX="231.0" layoutY="353.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="26.0" prefWidth="78.0" text="Eliminar" />
+      <Label layoutX="96.0" layoutY="14.0" prefHeight="16.0" prefWidth="171.0" text="REGISTRO JUGADORES">
+         <font>
+            <Font name="DejaVu Sans Bold" size="13.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="comboEQ" layoutX="96.0" layoutY="210.0" prefHeight="26.0" prefWidth="224.0" />
+      <Label layoutX="27.0" layoutY="215.0" text="IdEquipo" />
+      <Label layoutX="27.0" layoutY="253.0" text="Nombre" />
+      <TextField fx:id="nombreTF" layoutX="27.0" layoutY="269.0" />
+      <Label layoutX="27.0" layoutY="293.0" prefHeight="16.0" prefWidth="57.0" text="Apellido" />
+      <TextField fx:id="apellidoTF" layoutX="27.0" layoutY="309.0" />
+      <TextField fx:id="promoTF" layoutX="27.0" layoutY="353.0" />
+      <Label layoutX="29.0" layoutY="334.0" prefHeight="16.0" prefWidth="78.0" text="Promocion" />
+   </children>
+</AnchorPane>

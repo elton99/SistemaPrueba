@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="395.0" prefWidth="409.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Inscripcion.InscripcionesController">
+   <children>
+      <Label layoutX="83.0" layoutY="14.0" prefHeight="25.0" prefWidth="282.0" text="INSCRIPCION DE EQUIPOS" textFill="#e1dddd">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="20.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tablaInscripcion" layoutX="18.0" layoutY="46.0" onKeyPressed="#modificarlista" onMouseClicked="#modificarlista" prefHeight="217.0" prefWidth="376.0">
+        <columns>
+          <TableColumn fx:id="idCL" prefWidth="116.0" text="idInscripcion" />
+          <TableColumn fx:id="montoCL" prefWidth="258.0" text="Monto-Pago de Inscripcion" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="comboEQ" layoutX="36.0" layoutY="296.0" prefHeight="26.0" prefWidth="172.0" />
+      <Label layoutX="89.0" layoutY="273.0" prefHeight="16.0" prefWidth="68.0" text="IdEquipo" textFill="#f5e5e5">
+         <font>
+            <Font name="DejaVu Sans Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="18.0" layoutY="344.0" prefHeight="16.0" prefWidth="52.0" text="Monto" textFill="#e4dede">
+         <font>
+            <Font name="DejaVu Sans Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="montoTF" layoutX="66.0" layoutY="339.0" prefHeight="26.0" prefWidth="142.0" />
+      <Button fx:id="agregarBT" layoutX="238.0" layoutY="307.0" mnemonicParsing="false" onAction="#agregar" prefHeight="22.0" prefWidth="75.0" text="Agregar">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="modificarBT" layoutX="319.0" layoutY="307.0" mnemonicParsing="false" onAction="#mod" prefHeight="22.0" prefWidth="75.0" text="Modificar">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="eliminarBT" layoutX="238.0" layoutY="333.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="22.0" prefWidth="75.0" text="Eliminar">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="buscarBT" layoutX="319.0" layoutY="333.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="75.0" text="Buscar">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

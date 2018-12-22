@@ -17,12 +17,13 @@
           <MenuItem fx:id="equipoM" mnemonicParsing="false" onAction="#cargarEquipo" text="Registro equipo" />
           <MenuItem fx:id="jugadoresM" mnemonicParsing="false" onAction="#cargarJugador" text="Registro jugador" />
             <MenuItem fx:id="arbitroM" mnemonicParsing="false" text="Registro arbitro" />
+            <MenuItem fx:id="faseM" mnemonicParsing="false" onAction="#cargarFaseFinal" text="FaseFinal" />
             <MenuItem fx:id="EtapaFinalM" mnemonicParsing="false" onAction="#cargarEtapaFinal" text="Etapa Final" />
         </items>
       </MenuButton>
       <MenuButton fx:id="transM" alignment="CENTER" layoutX="344.0" layoutY="118.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="254.0" text="Transaccion">
         <items>
-          <MenuItem mnemonicParsing="false" text="Inscripcion" />
+          <MenuItem fx:id="InscripcionM" mnemonicParsing="false" onAction="#cargarInscripcion" text="Inscripcion" />
         </items>
       </MenuButton>
       <ImageView fitHeight="98.0" fitWidth="94.0" layoutX="500.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: blue;">
